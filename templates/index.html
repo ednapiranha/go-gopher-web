@@ -7,16 +7,22 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link href='//fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
     <style type="text/css">
+      html, body {
+        height: 100%;
+      }
+
       body {
         background-color: #222;
         font-family: 'Inconsolata';
         margin: 0;
+        overflow: hidden;
         padding: 0;
       }
 
       form {
         display: block;
         float: left;
+        height: 100%;
         margin: 0;
         position: relative;
         width: 100%;
@@ -30,7 +36,7 @@
         display: block;
         left: 5px;
         position: absolute;
-        right: 20px;
+        right: 5px;
       }
 
       .input-wrapper {
@@ -55,6 +61,7 @@
 
       #page {
         background-color: #333;
+        bottom: 0;
         min-height: 300px;
         margin-top: 2px;
         overflow: auto;
