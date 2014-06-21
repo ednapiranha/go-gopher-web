@@ -8,11 +8,104 @@
     <link href='//fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
     <style type="text/css">
       body {
+        background-color: #222;
         font-family: 'Inconsolata';
+        margin: 0;
+        padding: 0;
+      }
+
+      form {
+        display: block;
+        float: left;
+        margin: 0;
+        position: relative;
+        width: 100%;
+      }
+
+      form * {
+        color: #ccc;
+      }
+
+      form > * {
+        display: block;
+        left: 5px;
+        position: absolute;
+        right: 20px;
+      }
+
+      .input-wrapper {
+        background-color: #444;
+        padding: 5px;
+        top: 5px;
+      }
+
+      #url {
+        background-color: transparent;
+        border: 0;
+        font-size: 1.1rem;
+        height: 20px;
+        line-height: 1.2rem;
+        outline: none;
+        width: 100%;
+      }
+
+      #url:focus {
+        outline: none;
+      }
+
+      #page {
+        background-color: #333;
+        min-height: 300px;
+        margin-top: 2px;
+        overflow: auto;
+        padding: 2px;
+        top: 40px;
+      }
+
+      #page::selection {
+        background: #666;
+      }
+
+      #page::-moz-selection {
+        background: #666;
       }
     </style>
   </head>
   <body>
-    <h1>welcome to gopher!</h1>
+    <form method="POST">
+      <div class="input-wrapper">
+        <input type="text" name="url" id="url">
+      </div>
+      <pre id="page">
+            .                .
+            :"-.          .-";
+            |:`.`.__..__.'.';|
+            || :-"      "-; ||
+            :;              :;
+            /  .==.    .==.  \
+           :      _.--._      ;
+           ; .--.' `--' `.--. :
+          :   __;`      ':__   ;
+          ;  '  '-._:;_.-'  '  :
+          '.       `--'       .'
+           ."-._          _.-".
+         .'     ""------""     `.
+        /`-                    -'\
+       /`-                      -'\
+      :`-   .'              `.   -';
+      ;    /                  \    :
+     :    :                    ;    ;
+     ;    ;                    :    :
+     ':_:.'                    '.;_;'
+        :_                      _;
+        ; "-._                -" :`-.     _.._
+        :_          ()          _;   "--::__. `.
+         \"-                  -"/`._           :
+        .-"-.                 -"-.  ""--..____.'
+       /         .__  __.         \
+      : / ,       / "" \       . \ ; bug
+       "-:___..--"      "--..___;-"
+      </pre>
+    </form>
   </body>
 </html>
