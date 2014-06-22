@@ -23,9 +23,10 @@ func main() {
 	}
 
 	jsonParser := json.NewDecoder(file)
-  if err := jsonParser.Decode(&config); err != nil {
-      fmt.Printf("parsing config file", err.Error())
-  }
+	if err := jsonParser.Decode(&config); err != nil {
+		fmt.Printf("parsing config file", err.Error())
+		os.Exit(1)
+	}
 
 	r := render.New(render.Options{
 		Directory: "templates",
