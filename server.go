@@ -15,19 +15,19 @@ var config struct {
 	Development bool
 }
 
-func main() {
+func init() {
 	file, e := os.Open("./config.json")
 	if e != nil {
 		fmt.Printf("File error: %v\n", e)
-		os.Exit(1)
 	}
 
 	jsonParser := json.NewDecoder(file)
 	if err := jsonParser.Decode(&config); err != nil {
 		fmt.Printf("parsing config file", err.Error())
-		os.Exit(1)
 	}
+}
 
+func main() {
 	r := render.New(render.Options{
 		Directory: "templates",
 		Extensions: []string{".html"},
@@ -35,6 +35,9 @@ func main() {
 	})
 
 	mux := http.NewServeMux()
+
+	mux.Handle("/media/", http.StripPrefix("/media/", http.FileServer(http.Dir("media"))))
+
 	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		r.HTML(w, http.StatusOK, "index", nil)
 	})
