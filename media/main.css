@@ -4,10 +4,18 @@ html, body {
 
 body {
   background-color: #222;
-  font-family: 'Inconsolata';
   margin: 0;
   overflow: hidden;
   padding: 0;
+}
+
+body, input, pre {
+  font-family: 'Inconsolata', 'Courier New', 'Courier', monospace;
+}
+
+pre a {
+  color: #47d8f4;
+  text-decoration: none;
 }
 
 form {
@@ -60,10 +68,12 @@ form > * {
   top: 40px;
 }
 
-#page::selection {
-  background: #666;
+#page::selection, #page a::selection {
+  background: #47f4c9;
+  color: #222;
 }
 
-#page::-moz-selection {
-  background: #666;
+#page::-moz-selection, #page a::-moz-selection {
+  background: #47f4c9;
+  color: #222;
 }
