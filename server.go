@@ -4,13 +4,33 @@ import (
 	"github.com/codegangsta/negroni"
 	"github.com/unrolled/render"
 	"net/http"
+	"encoding/json"
+	"fmt"
+	"os"
+	"strconv"
 )
 
+var config struct {
+	Port int
+	Development bool
+}
+
 func main() {
+	file, e := os.Open("./config.json")
+	if e != nil {
+		fmt.Printf("File error: %v\n", e)
+		os.Exit(1)
+	}
+
+	jsonParser := json.NewDecoder(file)
+  if err := jsonParser.Decode(&config); err != nil {
+      fmt.Printf("parsing config file", err.Error())
+  }
+
 	r := render.New(render.Options{
 		Directory: "templates",
 		Extensions: []string{".html"},
-		IsDevelopment: true,
+		IsDevelopment: config.Development,
 	})
 
 	mux := http.NewServeMux()
@@ -20,5 +40,5 @@ func main() {
 
 	n := negroni.Classic()
 	n.UseHandler(mux)
-	n.Run(":3001")
+	n.Run(":" + strconv.Itoa(config.Port))
 }
