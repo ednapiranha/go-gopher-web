@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/codegangsta/negroni"
 	"github.com/unrolled/render"
+	"github.com/taotetek/gogopher"
 	"net/http"
 	"encoding/json"
 	"fmt"
@@ -40,6 +41,22 @@ func main() {
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		r.HTML(w, http.StatusOK, "index", nil)
+	})
+
+	mux.HandleFunc("/get", func(w http.ResponseWriter, req *http.Request) {
+		gd, err := gogopher.NewGopherDir(req.FormValue("url"))
+
+		if err != nil {
+			fmt.Printf("Error with parsing gopher url ", err.Error());
+		}
+
+		jsonBytes, err := gd.ToJSON()
+
+		if err != nil {
+			fmt.Printf("Error with parsing json ", err.Error());
+		}
+
+		r.JSON(w, http.StatusOK, string(jsonBytes))
 	})
 
 	n := negroni.Classic()
