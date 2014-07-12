@@ -6,5 +6,10 @@ This is a web access point for browsing gopher sites.
 
 Set your $GOPATH
 
-    go get github.com/codegangsta/negroni
-    go get github.com/unrolled/render
+Install goop
+
+	go get github.com/nitrous-io/goop
+
+Install dependencies
+
+	goop install
