@@ -47,13 +47,13 @@ func main() {
 		gd, err := gogopher.NewGopherDir(req.FormValue("url"))
 
 		if err != nil {
-			fmt.Printf("Error with parsing gopher url ", err.Error());
+			fmt.Printf("Error with parsing gopher url ", err.Error())
 		}
 
 		jsonBytes, err := gd.ToJSON()
 
 		if err != nil {
-			fmt.Printf("Error with parsing json ", err.Error());
+			fmt.Printf("Error with parsing json ", err.Error())
 		}
 
 		r.JSON(w, http.StatusOK, string(jsonBytes))
